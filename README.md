@@ -1,1 +1,1 @@
-# aws-practice
+# Deploy Next Application
