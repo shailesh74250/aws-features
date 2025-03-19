@@ -1,0 +1,24 @@
+Reference: https://www.youtube.com/watch?v=6Hj-stf51Bc&list=PLqoUmUbJ_zDHPwK-ZWATXiYrUXwWkLY65&ab_channel=TechWithHelen
+- Dockerize application
+- Create a docker image with the name
+- Build a docker image
+- Create ECR 
+- Create a role for ECR so that we can push or pull images from it
+- Login to ECR and push build docker image to ECR
+- Create ALB (Application load balancers)
+- Create ECS 
+- Create ECS task definition (Attach ECS execution permission)
+- Create ECS Cluster 
+- Create Service inside the ECS cluster 
+- Attach ALB to ECS Service
+- Access application via ALB public IP address
+- Enable Auto Scaling in ECS service to handle traffic spikes automatically.
+
+Security
+Use IAM roles (ecsTaskExecutionRole)
+Restrict ECR access with AWS IAM policies
+Use HTTPS with an SSL certificate (AWS ACM)
+🔹 Monitoring
+CloudWatch for logs & metrics
+AWS X-Ray for tracing requests
+Amazon GuardDuty for security threats
