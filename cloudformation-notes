@@ -1,0 +1,4 @@
+Cloudguard have certain templates 
+with help of template we can create resources
+
+- Templates must be uploaded in S3 and then referenced in CloudFormation
