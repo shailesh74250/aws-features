@@ -1,112 +1,98 @@
-# AWS Key Aspects
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+</p>
 
-## Security Best Practices
-### Use IAM Roles & Policies Properly
-- Principle of Least Privilege: Assign the minimum required permissions.
-- Use IAM roles instead of IAM users wherever possible
-- Enable MFA (Multi-Factor Authentication) for root and IAM users.
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-### Secure Your Credentials
-- Never hardcode AWS Credentials in code!
-- Use AWS Secrets Manager or Parameter Store for API keys & Credentials
-- Use .env files but ensure they are added to .gitignore
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-### Enable AWS Security Features
-- AWS GuardDuty: Detects suspicious activities.
-- AWS Shield: Protects against DDoS attacks.
-- AWS WAF: Protects applications from malicious requests.
-- AWS Inspector: Scans EC2 instances for vulnerabilities.
+## Description
 
-### Encryption & Data Security
-- Use AWS KMS for key management.
-- Enable encryption at rest (S3, RDS, EBS, etc.).
-- Enable encryption in transit using SSL/TLS.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Cost Optimization
-### Use AWS Cost Explorer & Budgets
-- Set up AWS Budgets to avoid unexpected charges.
-- Use Cost Explorer to monitor usage and reduce waste.
-### Choose the Right EC2 Intance Type
-- Use Spot Instances for non-critical workloads.
-- Use Reserved Instances for long-term workloads.
-- Use AWS Auto Scaling to adjust instances dynamically.
-### Optimize Storage Costs
-- Use S3 Lifecycle Policies to move old data to Glacier.
-- Use EBS snapshots efficiently to avoid unnecessary costs.
-- Enable Intelligent Tiering for S3 to reduce costs automatically.
-### Use Serverless for Cost Efficiency
-- Use AWS Lambda instead of EC2 for short-running processes.
-- Use Fargate instead of full-fledged ECS clusters if possible.
+## Project setup
 
+```bash
+$ npm install
+```
 
-## Performance & Scalability
-### Use Load Balancing & Auto Scaling
-### Optimize Databases for Performance
-### Use AWS Global Accelerator & CloudFront
+## Compile and run the project
 
-## Reliability & Monitoring
-### Set Up Logging & Monitoring
-- Enable AWS CloudWatch for logs & metrics.
-- Use AWS X-Ray for distributed tracing.
-- Enable AWS CloudTrail to track API calls and changes.
-### Backup & Disaster Recovery
-- Enable Automated Backups in RDS & EBS snapshots.
-- Use Multi-AZ Deployment for high availability.
-- Implement AWS Backup for centralized backup management.
-### Use AWS Well-Architected Framework
-- Regularly review your infrastructure using AWS Well-Architected Tool.
+```bash
+# development
+$ npm run start
 
-## Networking & Security Groups
-### VPC Best Practices
-- Use multiple Availability Zones (AZs) for high availability.
-- Keep databases and backend services in private subnets.
-- Use NAT Gateway to allow outgoing internet access for private subnets.
-### Security Groups & Firewalls
-- Always restrict SSH (port 22) access to trusted IPs.
-- Use security groups instead of allowing all traffic (0.0.0.0/0).
-- Use AWS WAF to protect against SQL injection and XSS attacks.
+# watch mode
+$ npm run start:dev
 
+# production mode
+$ npm run start:prod
+```
 
-## Best Practices for Difference AWS Services
-### For Compute (EC2, Lambda, ECS, Fargate)
-- Use Auto Scaling Groups (ASG) for EC2 instances.
-- Use ECS with Fargate for better containerized application management.
-- Prefer AWS Lambda for event-driven, small workloads.
-### For Storage (S3, EFS, EBS)
-- Use S3 with lifecycle rules to move old data to Glacier.
-- Use EFS for shared storage across multiple EC2 instances.
-- Use EBS snapshots for quick backups and disaster recovery.
-### For Database (RDS, DynamoDB, ElasticCache)
-- Use RDS Multi-AZ for high availability.
-- Use DynamoDB Global Tables for global applications.
-- Use ElastiCache (Redis/Memcached) to speed up read-heavy applications.
-### For CI/CD & Deployment
-- Use AWS CodePipeline for automated CI/CD.
-- Use AWS CodeDeploy to deploy to EC2, Lambda, or ECS.
-- Use Terraform or CloudFormation for Infrastructure as Code (IaC).
+## Run tests
 
-## Final Checklist for AWS Deployment
-✅ Security:
-- ☑ Enable IAM roles & MFA
-- ☑ Use VPC & Security Groups
-- ☑ Enable encryption (S3, RDS, etc.)
+```bash
+# unit tests
+$ npm run test
 
-✅ Performance & Scalability:
-- ☑ Use Load Balancers & Auto Scaling
-- ☑ Optimize databases (RDS, DynamoDB, ElastiCache)
-- ☑ Use CloudFront & Global Accelerator
+# e2e tests
+$ npm run test:e2e
 
-✅ Cost Optimization:
-- ☑ Use Spot & Reserved Instances
-- ☑ Enable S3 lifecycle policies
-- ☑ Monitor costs with AWS Cost Explorer
+# test coverage
+$ npm run test:cov
+```
 
-✅ Monitoring & Logging:
-- ☑ Enable CloudWatch Logs & Metrics
-- ☑ Use CloudTrail for API logging
-- ☑ Use AWS X-Ray for tracing requests
+## Deployment
 
-✅ Backup & Disaster Recovery:
-- ☑ Enable automated backups for RDS & EBS
-- ☑ Use Multi-AZ & Failover Strategies
-- ☑ Implement AWS Backup for centralized backup
+When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+
+If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+
+```bash
+$ npm install -g mau
+$ mau deploy
+```
+
+With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+
+## Resources
+
+Check out a few resources that may come in handy when working with NestJS:
+
+- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
+- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
+- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
+- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
+- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
+- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
+- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
+- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## License
+
+Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
