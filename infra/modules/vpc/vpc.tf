@@ -7,7 +7,7 @@ resource "aws_subnet" "public" {
   vpc_id = aws_vpc.main.id
   cidr_block = "10.0.${count.index}.0/24"
   map_public_ip_on_launch = true
-  availability_zone = element(["ap-south-1", "us-east-1b"], count.index)
+  availability_zone = element(["ap-south-1a", "ap-south-1b", "ap-south-1c"], count.index)
 }
 
 resource "aws_internet_gateway" "igw" {

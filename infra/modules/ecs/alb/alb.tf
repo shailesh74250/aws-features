@@ -2,15 +2,15 @@ resource "aws_lb" "nestjs_alb" {
   name               = "nestjs-alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.ecs_sg.id]
-  subnets           = aws_subnet.public[*].id
+  security_groups    = [var.ecs_sg_id]
+  subnets           = var.public_subnets
 }
 
 resource "aws_lb_target_group" "nestjs_tg" {
   name     = "nestjs-target-group"
   port     = 3000
   protocol = "HTTP"
-  vpc_id   = aws_vpc.main.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_lb_listener" "nestjs_listener" {
