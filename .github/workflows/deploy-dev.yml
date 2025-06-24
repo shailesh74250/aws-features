@@ -7,7 +7,7 @@ on:
 jobs:
   infra:
     runs-on: ubuntu-latest
-    # if: contains(join(github.event.commits.*.modified, ' '), '.tf')
+    if: contains(join(github.event.commits.*.modified, ' '), '.tf')
     steps:
       - uses: actions/checkout@v4
 
@@ -53,10 +53,11 @@ jobs:
         run: |
           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_URL }}
 
-      - name: Build, tag, and push image to ECR
-        run: |
-          run: docker build -t ${{ secrets.AWS_ECR_URL }}:latest .
-          run: docker push ${{ secrets.AWS_ECR_URL }}:latest
+      - name: Build
+        run: docker build -t ${{ secrets.AWS_ECR_URL }}:latest .
+      - name: Push to ECR
+        run: docker push ${{ secrets.AWS_ECR_URL }}:latest
+
   deploy:
     name: Deploy to ECS
     runs-on: ubuntu-latest
