@@ -15,6 +15,7 @@ import { swaggerConfig } from './config/swagger.config';
     DatabaseModule,
     UserModule,
     ConfigModule.forRoot({
+      envFilePath: [`.env.${process.env.NODE_ENV || 'development'}`],
       isGlobal: true,
       load: [swaggerConfig, databaseConfig, loggerConfig],
     }),
