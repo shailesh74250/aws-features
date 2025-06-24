@@ -7,7 +7,7 @@ on:
 jobs:
   infra:
     runs-on: ubuntu-latest
-    if: contains(join(github.event.commits.*.modified, ' '), '.tf')
+    # if: contains(join(github.event.commits.*.modified, ' '), '.tf')
     steps:
       - uses: actions/checkout@v4
 
